@@ -1,0 +1,133 @@
+<header>
+    <div class="round">
+        <span>{{currentRound.ID_RONDA}}/10 - </span>
+        <img src="{{URI}}/files/poker/cards/IMPAR.svg" alt="">
+        <span> × {{currentRound.NUM_CARTAS}}</span>
+        <div class="progress">
+            <div class="fill" [style.width]="progress"></div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="room">
+        <section class="topSection">
+            <div class="players left">
+                <ng-container *ngFor="let player of players">
+                    <div class="player" *ngIf="player.TURNO <= 3">
+                        <div class="image">
+                            <img src="{{URI}}/files/poker/avatars/avatar_{{player.FK_AVATAR}}.svg" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="nickname">{{player.NICKNAME}}</span>
+                            <span class="score">{{player.TURNO}}</span>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="board">
+                <div class="discard">
+                    <img src="{{URI}}/files/poker/cards/10_DIAMANTES.svg" alt="">
+                </div>
+                <div class="turn">
+                    <img class="bgTurn" src="./../../assets/img/bg_turn.png" alt="">
+                    <ng-container *ngFor="let player of players">
+                        <div class="player" *ngIf="player.TURNO == 4">
+                            <div class="avatar">
+                                <img src="{{URI}}/files/poker/avatars/avatar_{{player.FK_AVATAR}}.svg" alt="">
+                            </div>
+                            <div class="cards">
+                                <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/IMPAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/IMPAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/IMPAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/IMPAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                                <img src="{{URI}}/files/poker/cards/IMPAR.svg" alt="">
+                            </div>
+                            <div class="info">
+                                <span>{{player.NICKNAME}}</span>
+                                <span class="score">{{player.TURNO}}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+      
+            <div class="players right">
+                <ng-container *ngFor="let player of players">
+                    <div class="player" *ngIf="player.TURNO > 4">
+                        <div class="image">
+                            <img src="{{URI}}/files/poker/avatars/avatar_{{player.FK_AVATAR}}.svg" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="nickname">{{player.NICKNAME}}</span>
+                            <span class="score">{{player.TURNO}}</span>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </section>
+        
+        <section class="me">
+            <div class="controlBar">
+                <div class="avatar">
+                    <div class="image" *ngIf="me.AVATAR">
+                        <img src="{{URI}}/files/poker/avatars/{{me.AVATAR.IMAGEN}}" alt="{{me.AVATAR.IMAGEN}}">
+                    </div>
+                    <div class="info">
+                        <span class="score">126</span>
+                        <div>
+                            <img src="{{URI}}/files/poker/cards/PAR.svg" alt="">
+                            <span>× 20</span>
+                        </div>
+                    </div>
+                    <span class="nickname">{{me.NICKNAME}}</span>
+                </div>
+                <div class="actions">
+                    <div class="deck">
+                        <img src="{{URI}}/files/poker/cards/PAR_H.svg" alt="">
+                    </div>
+
+                    <!--button class="start" (click)="startGame()" *ngIf="author && players.length > 2">Iniciar</button-->
+                </div>
+            </div>
+            <section class="hand">
+                <div class="cards">
+                    <img src="{{URI}}/files/poker/cards/A_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/10_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/JOKER_COLOR.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/K_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/7_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/3_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/Q_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/A_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/5_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/A_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/10_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/JOKER_COLOR.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/K_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/7_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/3_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/Q_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/A_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/5_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/A_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/10_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/JOKER_COLOR.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/K_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/7_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/3_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/Q_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/A_CORAZONES.svg" alt="" (click)="selectCardFromHand()">
+                    <img src="{{URI}}/files/poker/cards/5_PICAS.svg" alt="" (click)="selectCardFromHand()">
+                </div>
+            </section>
+        </section>
+    </div>
+</main>

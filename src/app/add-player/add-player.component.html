@@ -1,0 +1,27 @@
+<div class="mainContainer">
+    <!------------------SELECCIONAR AVATAR------------------>
+    <section class="selectAvatar option" *ngIf="!gameNotFound">
+        <h2>¡Únete ahora!, ingresa tu alias y tu avatar</h2>
+        <label>Estás a un paso de iniciar la partida, escribe tu alias y elige un avatar:</label>
+        <div class="nickname">
+            <label for="">Escribe tu alias:</label>
+            <input type="text" name="" id="" placeholder="Máximo 20 caracteres" maxlength="20" #alias [(ngModel)]="nickname">
+        </div>
+        <div class="avatars">
+            <div class="avatar" *ngFor="let avatar of avatars">
+                <input type="radio" name="avatar" id="avatar-{{avatar.ID_AVATAR}}" [(ngModel)]="selectedAvatarId" [value]="avatar.ID_AVATAR">
+                <label for="avatar-{{avatar.ID_AVATAR}}" [ngClass]="{'busy': avatar.BUSY}">
+                    <img src="{{URI}}/files/poker/avatars/{{avatar.IMAGEN}}" alt="avatar">
+                </label>
+            </div>
+        </div>
+        <span class="alert alert-danger" *ngIf="errorToCreatePlayer">{{errorToCreatePlayer}}</span>
+        <button class="btn" (click)="selectAvatar()" [ngClass]="{'disabled': !selectedAvatarId || !nickname}">Listo, unirme</button>
+    </section>
+
+    <section class="option" *ngIf="gameNotFound">
+        <h2>Enlace inválido</h2>
+        <label>Lo sentimos, este enlace no es válido o está vencido.</label>
+        <button class="btn" routerLink="/">Ir a la página inicial</button>
+    </section>
+</div>

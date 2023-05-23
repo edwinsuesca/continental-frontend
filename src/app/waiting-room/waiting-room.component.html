@@ -1,0 +1,38 @@
+<main class="mainContainer">
+    <section class="players">
+        <ng-container *ngFor="let player of players">
+            <div class="player">
+                <div class="avatar">
+                    <img src="{{URI}}/files/poker/avatars/avatar_{{player.FK_AVATAR}}.svg" alt="">
+                </div>
+                <div class="info">
+                    <span class="nickname">{{player.NICKNAME}}</span>
+                    <span class="score">{{player.TURNO}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </section>
+    
+    <section class="await">
+        <div class="author" *ngIf="author">
+            <div class="shareLink">
+                <div class="option option-link">
+                    <label>Comparte el enlace de la partida con tus amigos:</label>
+                    <span class="link" #link (click)="copyText('link')">http://192.168.1.119:4200/new-player/{{gameId}}</span>
+                </div>
+
+                <div class="option option-code">
+                    <label>O envíales el código de la partida:</label>
+                    <span class="link" (click)="copyText('code')">{{gameId}}</span>
+                </div>
+            </div>
+            
+            <p>Podrás iniciar la partida cuando se hayan unido <strong>3 o más jugadores</strong>.</p>
+            <button class="btn btn-primary" *ngIf="players.length > 2" (click)="startGame()" >Iniciar Partida</button>
+        </div>
+
+        <div class="info" *ngIf="!author">
+            <p>Esperando <span *ngIf="players.length < 7" >a que se unan más jugadores o a</span> que el anfitrión inicie el la partida.</p>
+        </div>
+    </section>
+</main>

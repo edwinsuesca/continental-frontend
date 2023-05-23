@@ -1,0 +1,36 @@
+<div class="mainContainer">
+    <!------------------CREAR PARTIDA------------------>
+    <section class="newGame option" *ngIf="step === 'new_game'">
+        <h2>Crear una nueva partida</h2>
+        <p>Crea una nueva parida y comparte el código que se genera con tus amigos. </p>
+        <p>Podrás iniciar tu partida cuando hayan mínimo <strong>3 jugadores</strong>. Por partida habrá un máximo de <strong>7 jugadores</strong>, incluyéndote a tí.</p>
+
+        <button type="button" value="" (click)="createGame()">Crear nueva partida</button>
+    </section>
+
+    <hr class="line" *ngIf="step === 'new_game'">
+
+    <!------------------UNIRSE A UNA PARTIDA------------------>
+    <section class="joinAGame option" *ngIf="!gameId">
+        <h2>Unirme a una partida</h2>
+        <label for="gameId">Pega aquí el código de una partida para unirte</label>
+        <input type="text" name="gameId" id="gameId" placeholder="u9Sc3PXV6CkEKNRC3yjxWHWHiPt_Q6" #codeForJoin>
+        <span class="alert alert-danger" *ngIf="gameNotFound">
+            Código inválido o partida vencida. Ingresa un código válido.
+        </span>
+        <button type="button" value="" (click)="joinToGame(codeForJoin.value)">Unirme</button>
+    </section>
+
+    <!------------------COMPARTIR CÓDIGO------------------>
+    <section class="shareCode option" *ngIf="gameId && selectedAvatarImage !== '' && step === 'await-players'">
+        <img src="{{URI}}/files/{{selectedAvatarImage}}" alt="" *ngIf="selectedAvatarImage !== ''">
+        <h2>¡Buena elección, {{nickname}}!</h2>
+        <label>Ahora envía el siguiente enlace a tus amigos para que se unan a tu partida:</label>
+        <a class="link" *ngIf="isAuthor">http://192.168.1.119:4200/new-player/{{gameId}}</a>
+
+        <label *ngIf="isAuthor">...También puedes compartir el código de la partida:</label>
+        <span class="code" *ngIf="isAuthor">{{gameId}}</span>
+    </section>
+
+    <hr class="line" *ngIf="step === 'await-players'">
+</div>

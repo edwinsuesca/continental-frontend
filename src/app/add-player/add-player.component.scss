@@ -1,0 +1,99 @@
+.mainContainer{
+    background-color: #1a162a;
+    min-height: 100vh;
+    display: flex;
+    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    h2{
+        color: #acacac;
+        margin-bottom: 20px;
+    }
+    button{
+        background-color: rgb(127, 204, 255);
+        color: #1a162a;
+        font-size: 22px;
+        outline: none;
+        border: none;
+        padding: 20px;
+        width: 250px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    label{
+        color: #acacac;
+    }
+}
+
+.selectAvatar{
+    > label{
+        padding: 0 20px;
+    }
+    .avatars{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        .avatar{
+            label{
+                padding: 0;
+                display: block;
+
+                background-color: transparent;
+                border-radius: 7px;
+                border: dashed 2px transparent;
+                transition: all 0.1s ease-in;
+                user-select: none;
+                img{
+                    width: 80px;
+                    user-select: none;
+                }
+                &:hover{
+                    scale: 1.1
+                }
+            }
+            input{
+                display: none;
+            }
+            
+            input:checked + label{
+                background-color: #000000;
+                border-color: #87d9ff6e;
+            }
+            .busy{
+                filter: saturate(0);
+                opacity: 0.4;
+                pointer-events: none;
+                cursor: default;
+            }
+        }
+    }
+    .nickname{
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        input[type="text"]{
+            font-size: 20px;
+            padding: 7px 15px;
+            border-radius: 7px;
+            outline: none;
+            border: none;
+        }
+    }
+    button{
+        margin-top: 20px;
+        background-color: #76d963;
+    }
+}

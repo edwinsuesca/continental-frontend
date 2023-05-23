@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.btn{
+    transition: all 0.2s ease-in;
+    font-size: 1.7em;
+    border-radius: 7px;
+    padding: 15px;
+    border: none;
+    user-select: none;
+}
+
+.btn:hover{
+    scale: 1.05;
+}
+
+.btn:active{
+    scale: 0.9;
+}
+
+.disabled{
+    user-select: none !important;
+    pointer-events: none !important;
+    filter: grayscale(1) !important;
+}
+
+.btn-primary{
+    background-color: #63ffa1;
+    color: #1a162a;
+    font-weight: bold;
+    box-shadow: 0 10px 40px #0000003b;
+}
+
+.alert-danger{
+    background-color: #ffcece;
+    border-radius: 5px;
+    padding: 10px;
+    color: #a13e3e;
+}
+
+.line{
+    width: 100%;
+    background-color: #ffffff23;
+    height: 2px;
+    border: none;
+    margin: 0;
+}

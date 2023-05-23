@@ -1,0 +1,350 @@
+header{
+    height: 40px;
+    background-color: #0d2126;
+    color: #77969f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .round{
+        display: flex;
+        gap: 5px;
+        position: relative;
+        img{
+            width: 12px;
+        }
+        .progress{
+            position: absolute;
+            bottom: -7px;
+            width: 100%;
+            height: 3px;
+            background-color: #78e2ff2f;
+            border-radius: 2px;
+            overflow: hidden;
+            .fill{
+                background-color: #a3994c;
+                height: 100%;
+            }
+        }
+    }
+}
+main{
+    background-image: url(./../../assets/img/bg_game.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    min-height: calc(100vh - 40px);
+}
+
+.room{
+    background-color: #0d252b9e;
+    min-height: calc(100vh - 40px);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: space-between;
+    .topSection{
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+        .players{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 5;
+            position: absolute;
+            top: 5px;
+            z-index: 20;
+            .player{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: min-content;
+                .image{
+                    height: 75px;
+                    width: 75px;
+                    background-color: #102a30ff;
+                    display: flex;
+                    border: solid 2px #374f56;
+                    border-radius: 10px;
+                    z-index: 2;
+                    img{
+                        height: 65px;
+                        margin: auto;
+                    }
+                }
+                .info{
+                    font-weight: bold;
+                    color: #77969f;
+                    background-color: #0d2126;
+                    width: 100%;
+                    padding: 4px;
+                    padding-top: 24px;
+                    border: solid 2px #374f56;
+                    border-radius: 10px;
+                    margin-top: -20px;
+                    width: 75px;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    span{
+                        font-size: 13px;
+                        display: block;
+                        text-align: center;
+                        margin: auto;
+                        width: 100%;
+                    }
+                    .nickname{
+                        overflow-x: auto;
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+                    }
+                    .score{
+                        color: #fbc434
+                    }
+                }
+            }
+        }
+
+        .left{
+            left: 5px;
+        }
+        
+        .right{
+            right: 5px;
+            justify-content: flex-end;
+            flex-direction: column-reverse;
+        }
+
+        .board{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: min-content;
+            padding-top: 60px;
+            width: 100%;
+
+            .discard{
+                img{
+                    width: 130px;
+                }
+            }
+
+            .turn{
+                display: flex;
+                justify-content: center;
+                padding: 15px 0;
+                position: relative;
+                width: 100%;
+                margin-top: 70px;
+                .bgTurn{
+                    position: absolute;
+                    width: 100%;
+                    max-width: 400px;
+                    z-index: 1;
+                    top: -30px;
+                    filter: blur(50px);
+                    animation: bgTurn 3s ease-in-out infinite;
+                }
+
+                .player{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    z-index: 2;
+                    width: 100%;
+                    padding: 0 5px;
+                    .avatar{
+                        height: 85px;
+                        width: 85px;
+                        background-color: #102a30ff;
+                        display: flex;
+                        border: solid 2px #fbc434;
+                        border-radius: 10px;
+                        z-index: 2;
+                        img{
+                            height: 75px;
+                            margin: auto;
+                        }
+                    }
+        
+                    .cards{
+                        display: flex;
+                        flex-wrap: nowrap;
+                        overflow-x: auto;
+                        max-width: 100%;
+                        z-index: 3;
+                        margin-top: -10px;
+                        img{
+                            width: 35px;
+                            margin-left: -18px;
+                            filter: drop-shadow(2px 4px 8px #000000a2);  
+                        }
+                        img:first-child{
+                            margin: 0;
+                        }
+                    }
+        
+                    .info{
+                        font-weight: bold;
+                        color: #77969f;
+                        background-color: #0d2126;
+                        padding: 4px 8px;
+                        padding-top: 24px;
+                        border: solid 2px #fbc434;
+                        border-radius: 10px;
+                        margin-top: -20px;
+                        span{
+                            font-size: 13px;
+                            display: block;
+                            text-align: center;
+                            margin: auto;
+                            width: max-content;
+                        }
+                        .score{
+                            color: #fbc434
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .me{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        .controlBar{
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            .avatar{
+                display: grid;
+                grid-template-areas: "avatar info" "nickname nickname";
+                align-items: center;
+                width: min-content;
+                .image{
+                    grid-area: avatar;
+                    height: 75px;
+                    width: 75px;
+                    background-color: #102a30;
+                    display: flex;
+                    border: solid 2px #374f56;
+                    border-radius: 10px;
+                    z-index: 2;
+                    img{
+                        height: 65px;
+                        margin: auto;
+                    }
+                }
+                .info{
+                    grid-area: info;
+                    background-color: #0d2126;
+                    padding: 4px;
+                    padding-left: 20px;
+                    border: solid 2px #374f56;
+                    border-radius: 10px;
+                    margin-left: -20px;
+        
+                    .score{
+                        color: #fbc434;
+                        font-weight: bold;
+                        font-size: 16px;
+                        display: block;
+                        text-align: center;
+                        margin: auto;
+                        margin-bottom: 3px;
+                    }
+        
+                    div{
+                        display: flex;
+                        margin-left: 5px;
+                        align-items: center;
+                        img{ width: 18px; }
+                        span{
+                            width: max-content;
+                            margin-left: 5px;
+                            font-size: 16px;
+                            font-weight: bold;
+                            color: #77969f;
+                        }
+                    }
+                }
+                .nickname{
+                    grid-area: nickname;
+                    color: #77969f;
+                    font-weight: bold;
+                    font-size: 15px;
+                    margin-top: 5px;
+                }
+            }
+            .actions{
+                flex-grow: 2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .deck{
+                    background-color: #fbc434;
+                    box-shadow: 0 0 15px #fbc434;
+                    display: flex;
+                    padding: 5px;
+                    border-radius: 7px;
+                    img{
+                        height: 70px;
+                    }
+                    display: none;
+                }
+
+                .start{
+                    font-size: 2em;
+                    width: 80%;
+                    background-color: #fbc434;
+                    color: #0d2126;
+                    font-weight: bold;
+                    padding: 15px 10px;
+                    border-radius: 10px;
+                    border: none;
+                }
+            }
+        }
+        .hand{
+            display: flex;
+            justify-content: center;
+            .cards{
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding: 0 5px;
+                align-self: center;
+                img{
+                    height: 140px;
+                    margin-left: -40px;
+                    filter: drop-shadow(2px 4px 15px #000000a2);            
+                }
+                img:first-child{
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+@keyframes bgTurn {
+    0%{
+        scale: 1;
+        transform: rotateZ(-360deg);
+    }
+    50%{
+        scale: 0.8;
+    }
+    100%{
+        scale: 1;
+        transform: rotateZ(0);
+    }
+}
